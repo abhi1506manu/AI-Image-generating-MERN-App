@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const { connectDB } = require("./mongodb/connect.js");
 
 require("dotenv").config();
 
@@ -10,11 +11,16 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 
-app.get('/',async(req,res)=>{
-    res.send('Hello from server');
-})
+app.get("/", async (req, res) => {
+  res.send("Hello from server");
+});
 
 const startServer = async () => {
-  app.listen(5000, () => console.log("Server listening on port 5000"));
+  try {
+    connectDB(process.env.MongoDB_URL);
+    app.listen(8000, () => console.log("Server listening on port 5000"));
+  } catch (error) {
+    console.log(error);
+  }
 };
 startServer();
