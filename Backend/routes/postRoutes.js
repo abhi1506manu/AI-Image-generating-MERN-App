@@ -17,8 +17,8 @@ v2.config({
 router.route("/").get(async (req, res) => {
   try {
     const posts = await Post.find({});
-    console.log("posts are getting");
-    console.log(posts);
+    // console.log("posts are getting");
+    // console.log(posts);
     res.status(200).json({ success: true, data: posts });
   } catch (error) {
     res.status(500).json({
@@ -46,7 +46,7 @@ router.route("/").post(async (req, res) => {
       photo: photoUrl.url,
     });
     console.log("*****************************");
-    console.log(newPost);
+    // console.log(newPost);
 
     res.status(201).json({ success: true, data: newPost });
     console;
