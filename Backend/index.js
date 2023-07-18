@@ -15,6 +15,7 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 
+//routes
 app.use("/api/v1/post", postRoutes);
 app.use("/api/v1/dalle", dalleRoutes);
 
@@ -25,7 +26,7 @@ app.get("/", async (req, res) => {
 const startServer = async () => {
   try {
     connectDB(process.env.MongoDB_URL);
-    app.listen(8000, () => console.log("Server listening on port 5000"));
+    app.listen(8000, () => console.log("Server listening on port 8000"));
   } catch (error) {
     console.log(error);
   }
