@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { getRandomPrompt } from "../utils";
-import { FormField,Loader } from "../components";
+import { FormField, Loader } from "../components";
 import { preview } from "../assets";
-
 
 const CreatePost = () => {
   const navigate = useNavigate();
@@ -17,8 +16,30 @@ const CreatePost = () => {
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = () => {
-    
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (form.prompt && form.photo) {
+      setLoading(true);
+
+      try {
+        const response = await fetch("http://localhost:8000/api/v1/post", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        });
+
+        await response.json();
+        navigate("/");
+      } catch (error) {
+        alert(error);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      alert("Please enter a prompt and generate an image");
+    }
   };
 
   const handleChange = (e) => {
@@ -30,7 +51,7 @@ const CreatePost = () => {
     setForm({ ...form, prompt: randomPrompt });
   };
 
-  const generateImage = async()=>{
+  const generateImage = async () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
@@ -41,14 +62,14 @@ const CreatePost = () => {
           },
           body: JSON.stringify({ prompt: form.prompt }),
         });
-        console.log(response)
+        console.log(response);
 
         const data = await response.json();
-        console.log(data)
+        console.log(data);
 
         setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
       } catch (error) {
-        console.log(error)
+        console.log(error);
         alert(error);
       } finally {
         setGeneratingImg(false);
@@ -56,8 +77,7 @@ const CreatePost = () => {
     } else {
       alert("Please enter the prompt");
     }
-
-  }
+  };
 
   return (
     <section className="max-w-7xl mx-auto">
@@ -91,7 +111,7 @@ const CreatePost = () => {
             handleSurpriseMe={handleSurpriseMe}
           />
 
-         <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text:sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center ">
+          <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text:sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center ">
             {form.photo ? (
               <img
                 src={form.photo}
@@ -134,7 +154,6 @@ const CreatePost = () => {
             {loading ? "Sharing..." : "Share with the community"}
           </button>
         </div>
-
       </form>
     </section>
   );
