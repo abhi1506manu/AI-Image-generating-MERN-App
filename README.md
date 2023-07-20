@@ -4,8 +4,10 @@
 Screenshot
 ![Home](https://i.imgur.com/pkg4IDN.png)
 <hr>
-![Images](https://i.imgur.com/uivXMPT.png)
+
+![image](https://i.imgur.com/uivXMPT.png)
 <hr>
+
 ![create-post](https://i.imgur.com/DMKAcOF.png)
 
 ## Tech Stack
