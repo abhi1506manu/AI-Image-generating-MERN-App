@@ -1,7 +1,12 @@
 # AI Image Generating MERN App
 
 ## DEMO
-
+Screenshot
+[Imgur](https://i.imgur.com/pkg4IDN.png)
+<hr>
+[Imgur](https://i.imgur.com/uivXMPT.png)
+<hr>
+[Imgur](https://i.imgur.com/DMKAcOF.png)
 
 ## Tech Stack
 For Frontend
