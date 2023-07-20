@@ -12,7 +12,7 @@ const configuration = new Configuration({
 
 
 const openai = new OpenAIApi(configuration);
-console.log('************api3**************')
+// console.log('************api3**************')
 
 router.route("/").get((req, res) => {
   res.send("Hello from Dall-E");
@@ -30,7 +30,7 @@ router.route("/").post(async (req, res) => {
       response_format: "b64_json",
     });
 
-    console.log(aiResponse)
+    // console.log(aiResponse)
 //image
     const image = aiResponse.data.data[0].b64_json;
     res.status(200).json({ photo: image });
