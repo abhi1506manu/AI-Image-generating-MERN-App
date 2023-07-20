@@ -2,11 +2,11 @@
 
 ## DEMO
 Screenshot
-[Imgur](https://i.imgur.com/pkg4IDN.png)
+![Home](https://i.imgur.com/pkg4IDN.png)
 <hr>
-[Imgur](https://i.imgur.com/uivXMPT.png)
+![Images](https://i.imgur.com/uivXMPT.png)
 <hr>
-[Imgur](https://i.imgur.com/DMKAcOF.png)
+![create-post](https://i.imgur.com/DMKAcOF.png)
 
 ## Tech Stack
 For Frontend
